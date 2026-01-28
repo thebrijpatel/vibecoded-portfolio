@@ -1,18 +1,16 @@
-name: Deploy Portfolio
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   deploy:
-    environment: aws
     runs-on: ubuntu-latest
 
+    enironment: aws
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Upload to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
@@ -20,12 +18,9 @@ jobs:
           args: --delete
         env:
           AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: "./"
 
-      - name: Invalidate CloudFront cache
+      - name: Invalidate CloudFront
         run: |
           aws cloudfront create-invalidation \
             --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
