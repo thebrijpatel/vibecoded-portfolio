@@ -3,28 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brijesh Patel - Backend Engineer</title>
+
+    <title>Brijesh Patel | Senior Backend Engineer & System Architect</title>
+    <meta
+      name="title"
+      content="Brijesh Patel | Senior Backend Engineer & System Architect"
+    />
+    <meta
+      name="description"
+      content="Senior Backend Engineer with 6+ years of experience specializing in GraphQL, Node.js, Python, and AWS. Expert in building scalable systems for 1M+ users."
+    />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://brijeshpatel.com/" />
+    <meta
+      property="og:title"
+      content="Brijesh Patel | Senior Backend Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Specialized in high-performance APIs, scalable architecture, and cloud infrastructure."
+    />
+    <meta
+      property="og:image"
+      content="https://brijeshpatel.com/preview-image.jpg"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2300f5ff' d='M4 5h16a1 1 0 0 1 1 1v9H3V6a1 1 0 0 1 1-1zm-1 11h18v2H3v-2z'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23bb40ff' d='M4 5h16a1 1 0 0 1 1 1v9H3V6a1 1 0 0 1 1-1zm-1 11h18v2H3v-2z'/%3E%3C/svg%3E"
     />
 
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;800&display=swap"
       rel="stylesheet"
     />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Brijesh Patel",
+        "jobTitle": "Senior Backend Engineer",
+        "url": "https://brijeshpatel.com",
+        "email": "sadariyabrijesh@gmail.com"
+      }
+    </script>
+
     <style>
       :root {
-        --bg-primary: #0b0d17;
-        --bg-secondary: #13151f;
-        --bg-card: #1a1d2e;
-        --accent: #00f5ff;
-        --accent-dim: rgba(0, 245, 255, 0.1);
-        --text: #e4e7eb;
-        --text-dim: #9ca3af;
-        --gradient-1: #00f5ff;
-        --gradient-2: #00d4ff;
+        /* NEW COLOR SCHEME: Cyber-Void Violet */
+        --bg-primary: #050508; /* Deep Obsidian */
+        --bg-secondary: #0f0f16;
+        --bg-card: rgba(20, 20, 35, 0.6); /* Glassy Purple Tint */
+
+        --accent: #bb40ff; /* Electric Purple */
+        --accent-dim: rgba(187, 64, 255, 0.1);
+
+        --text: #ffffff;
+        --text-dim: #94a3b8;
+
+        --gradient-1: #bb40ff;
+        --gradient-2: #5d26c1; /* Deep Violet */
       }
 
       * {
@@ -39,6 +83,18 @@
         color: var(--text);
         line-height: 1.6;
         overflow-x: hidden;
+      }
+
+      /* WebGL Canvas */
+      #canvas-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 1.5s ease;
       }
 
       /* 3D Loader Animation */
@@ -79,7 +135,6 @@
         }
       }
 
-      /* 3D Character Container */
       .character-3d {
         width: 200px;
         height: 200px;
@@ -90,7 +145,6 @@
         transform-style: preserve-3d;
       }
 
-      /* Character Head - 3D Cube */
       .head {
         width: 80px;
         height: 80px;
@@ -116,7 +170,8 @@
         width: 80px;
         height: 80px;
         background: linear-gradient(135deg, #9ca3af, #6b7280);
-        border: 2px solid rgba(0, 245, 255, 0.3);
+        /* Updated Border Color to Purple RGB (187, 64, 255) */
+        border: 2px solid rgba(187, 64, 255, 0.3);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -142,7 +197,6 @@
         transform: rotateX(-90deg) translateZ(40px);
       }
 
-      /* Face Details */
       .face-front {
         width: 100%;
         height: 100%;
@@ -157,7 +211,6 @@
         display: flex;
         gap: 20px;
       }
-
       .eye {
         width: 10px;
         height: 10px;
@@ -165,7 +218,6 @@
         border-radius: 50%;
         animation: blink 3s infinite;
       }
-
       @keyframes blink {
         0%,
         95%,
@@ -176,7 +228,6 @@
           transform: scaleY(0.1);
         }
       }
-
       .mouth {
         width: 30px;
         height: 15px;
@@ -185,7 +236,6 @@
         border-radius: 0 0 15px 15px;
       }
 
-      /* 3D Body */
       .body {
         width: 100px;
         height: 120px;
@@ -194,15 +244,13 @@
         top: 100px;
         transform-style: preserve-3d;
       }
-
       .body .face {
         position: absolute;
         width: 100px;
         height: 120px;
         background: linear-gradient(135deg, #1a1d2e, #13151f);
-        border: 2px solid rgba(0, 245, 255, 0.2);
+        border: 2px solid rgba(187, 64, 255, 0.2);
       }
-
       .body .front {
         transform: translateZ(30px);
       }
@@ -226,7 +274,6 @@
         height: 60px;
       }
 
-      /* 3D Laptop */
       .laptop {
         width: 140px;
         height: 100px;
@@ -235,7 +282,6 @@
         top: 160px;
         transform-style: preserve-3d;
       }
-
       .laptop-base {
         width: 140px;
         height: 10px;
@@ -243,26 +289,22 @@
         transform-style: preserve-3d;
         bottom: 0;
       }
-
       .laptop-base .face {
         position: absolute;
         background: #2a2d3e;
-        border: 1px solid rgba(0, 245, 255, 0.3);
+        border: 1px solid rgba(187, 64, 255, 0.3);
       }
-
       .laptop-base .top {
         width: 140px;
         height: 100px;
         transform: rotateX(90deg) translateZ(5px);
         background: linear-gradient(135deg, #2a2d3e, #1a1d2e);
       }
-
       .laptop-base .bottom {
         width: 140px;
         height: 100px;
         transform: rotateX(-90deg) translateZ(5px);
       }
-
       .laptop-screen {
         width: 140px;
         height: 100px;
@@ -272,7 +314,6 @@
         transform-origin: bottom;
         animation: screenOpen 3s ease-in-out infinite;
       }
-
       @keyframes screenOpen {
         0%,
         100% {
@@ -282,13 +323,11 @@
           transform: rotateX(-100deg);
         }
       }
-
       .laptop-screen .face {
         position: absolute;
         width: 140px;
         height: 100px;
       }
-
       .laptop-screen .front {
         background: linear-gradient(135deg, var(--accent), var(--gradient-2));
         transform: translateZ(3px);
@@ -296,16 +335,14 @@
         flex-direction: column;
         gap: 5px;
         padding: 15px;
-        box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+        box-shadow: 0 0 30px rgba(187, 64, 255, 0.5);
       }
-
       .code-line {
         height: 3px;
         background: rgba(11, 13, 23, 0.6);
         border-radius: 2px;
         animation: codeLine 2s ease-in-out infinite;
       }
-
       .code-line:nth-child(1) {
         width: 60%;
         animation-delay: 0s;
@@ -342,14 +379,12 @@
           opacity: 1;
         }
       }
-
       .laptop-screen .back {
         background: #13151f;
         transform: translateZ(-3px) rotateY(180deg);
-        border: 1px solid rgba(0, 245, 255, 0.2);
+        border: 1px solid rgba(187, 64, 255, 0.2);
       }
 
-      /* Arms */
       .arm {
         position: absolute;
         width: 15px;
@@ -357,23 +392,20 @@
         background: linear-gradient(180deg, #9ca3af, #6b7280);
         border-radius: 8px;
         transform-style: preserve-3d;
-        border: 1px solid rgba(0, 245, 255, 0.2);
+        border: 1px solid rgba(187, 64, 255, 0.2);
       }
-
       .arm-left {
         left: 45px;
         top: 110px;
         transform: rotateZ(20deg);
         animation: armTypeLeft 0.6s ease-in-out infinite;
       }
-
       .arm-right {
         right: 45px;
         top: 110px;
         transform: rotateZ(-20deg);
         animation: armTypeRight 0.6s ease-in-out infinite alternate;
       }
-
       @keyframes armTypeLeft {
         0%,
         100% {
@@ -383,7 +415,6 @@
           transform: rotateZ(20deg) translateY(5px);
         }
       }
-
       @keyframes armTypeRight {
         0%,
         100% {
@@ -394,7 +425,6 @@
         }
       }
 
-      /* Coffee Mug - 3D */
       .coffee-mug {
         width: 30px;
         height: 40px;
@@ -403,20 +433,17 @@
         top: 170px;
         transform-style: preserve-3d;
       }
-
       .mug-body {
         width: 30px;
         height: 40px;
         position: relative;
         transform-style: preserve-3d;
       }
-
       .mug-body .face {
         position: absolute;
         background: linear-gradient(135deg, #8b4513, #654321);
-        border: 1px solid rgba(0, 245, 255, 0.2);
+        border: 1px solid rgba(187, 64, 255, 0.2);
       }
-
       .mug-body .front {
         width: 30px;
         height: 40px;
@@ -451,23 +478,21 @@
         left: -1px;
         background: radial-gradient(circle, #654321, #8b4513);
         border-radius: 50%;
-        border: 2px solid rgba(0, 245, 255, 0.3);
+        border: 2px solid rgba(187, 64, 255, 0.3);
       }
-
       .steam {
         position: absolute;
         width: 3px;
         height: 20px;
         background: linear-gradient(
           180deg,
-          rgba(0, 245, 255, 0.6),
+          rgba(187, 64, 255, 0.6),
           transparent
         );
         border-radius: 50%;
         top: -20px;
         animation: steam 2s ease-in-out infinite;
       }
-
       .steam:nth-child(1) {
         left: 8px;
         animation-delay: 0s;
@@ -495,7 +520,6 @@
         }
       }
 
-      /* Loading Text */
       .loading-text {
         font-family: "JetBrains Mono", monospace;
         font-size: 1.3rem;
@@ -503,7 +527,6 @@
         margin-top: 50px;
         animation: pulse-text 1.5s ease-in-out infinite;
       }
-
       @keyframes pulse-text {
         0%,
         100% {
@@ -513,12 +536,10 @@
           opacity: 1;
         }
       }
-
       .loading-dots::after {
         content: "";
         animation: dots 1.5s steps(4, end) infinite;
       }
-
       @keyframes dots {
         0%,
         20% {
@@ -536,83 +557,6 @@
         }
       }
 
-      /* Animated Background */
-      .bg-wrapper {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        overflow: hidden;
-      }
-
-      .bg-dots {
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(
-          circle,
-          rgba(0, 245, 255, 0.05) 1px,
-          transparent 1px
-        );
-        background-size: 40px 40px;
-        animation: bgScroll 60s linear infinite;
-      }
-
-      @keyframes bgScroll {
-        0% {
-          background-position: 0 0;
-        }
-        100% {
-          background-position: 40px 40px;
-        }
-      }
-
-      .floating-orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.3;
-        animation: float 20s ease-in-out infinite;
-      }
-
-      .orb-1 {
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, var(--gradient-1), transparent);
-        top: -200px;
-        right: -200px;
-        animation-delay: 0s;
-      }
-
-      .orb-2 {
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, var(--gradient-2), transparent);
-        bottom: -150px;
-        left: -150px;
-        animation-delay: 7s;
-      }
-
-      .orb-3 {
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, var(--gradient-1), transparent);
-        top: 50%;
-        left: 50%;
-        animation-delay: 14s;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        33% {
-          transform: translate(100px, -100px) scale(1.1);
-        }
-        66% {
-          transform: translate(-100px, 100px) scale(0.9);
-        }
-      }
-
       .container {
         max-width: 1200px;
         margin: 0 auto;
@@ -621,14 +565,14 @@
         z-index: 1;
       }
 
-      /* Header with glassmorphism */
+      /* Header */
       header {
         position: sticky;
         top: 0;
         padding: 1.5rem 0;
-        background: rgba(11, 13, 23, 0.7);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+        backdrop-filter: blur(10px);
+        background: rgba(5, 5, 8, 0.8);
+        border-bottom: 1px solid rgba(187, 64, 255, 0.1);
         z-index: 1000;
         animation: slideDown 0.6s ease;
       }
@@ -661,17 +605,11 @@
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: glow 3s ease-in-out infinite;
+        cursor: pointer;
+        transition: transform 0.3s ease;
       }
-
-      @keyframes glow {
-        0%,
-        100% {
-          filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.5));
-        }
-        50% {
-          filter: drop-shadow(0 0 16px rgba(0, 245, 255, 0.8));
-        }
+      .logo:hover {
+        transform: scale(1.05);
       }
 
       .nav-links {
@@ -688,39 +626,22 @@
         position: relative;
         transition: color 0.3s ease;
       }
-
-      .nav-links a::before {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background: var(--accent);
-        transform: translateX(-50%);
-        transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      }
-
       .nav-links a:hover {
         color: var(--accent);
       }
 
-      .nav-links a:hover::before {
-        width: 100%;
-      }
-
-      /* Hero Section with Advanced Animations */
+      /* Hero */
       .hero {
         min-height: 100vh;
         display: flex;
         align-items: center;
         padding: 4rem 0;
       }
-
       .hero-content {
         max-width: 850px;
+        /* Tilt-card class removed here to stop hero from moving */
+        transform-style: preserve-3d;
       }
-
       .hero-tag {
         display: inline-block;
         padding: 0.5rem 1.25rem;
@@ -734,7 +655,6 @@
         opacity: 0;
         animation: fadeInUp 0.8s ease 0.2s forwards;
       }
-
       .hero-title {
         font-size: clamp(3rem, 10vw, 5.5rem);
         font-weight: 800;
@@ -743,7 +663,6 @@
         opacity: 0;
         animation: fadeInUp 0.8s ease 0.4s forwards;
       }
-
       .hero-title .name {
         display: block;
         background: linear-gradient(
@@ -753,19 +672,7 @@
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: shimmer 3s ease-in-out infinite;
       }
-
-      @keyframes shimmer {
-        0%,
-        100% {
-          filter: brightness(1);
-        }
-        50% {
-          filter: brightness(1.3);
-        }
-      }
-
       .hero-subtitle {
         font-size: 1.75rem;
         color: var(--text-dim);
@@ -773,7 +680,6 @@
         opacity: 0;
         animation: fadeInUp 0.8s ease 0.6s forwards;
       }
-
       .hero-description {
         font-size: 1.2rem;
         color: var(--text-dim);
@@ -782,14 +688,12 @@
         opacity: 0;
         animation: fadeInUp 0.8s ease 0.8s forwards;
       }
-
       .hero-cta {
         display: flex;
         gap: 1.5rem;
         opacity: 0;
         animation: fadeInUp 0.8s ease 1s forwards;
       }
-
       @keyframes fadeInUp {
         to {
           opacity: 1;
@@ -801,6 +705,7 @@
         }
       }
 
+      /* Magnetic Buttons */
       .btn {
         padding: 1.1rem 2.5rem;
         font-family: "JetBrains Mono", monospace;
@@ -808,48 +713,26 @@
         font-weight: 600;
         text-decoration: none;
         border-radius: 12px;
-        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         position: relative;
         overflow: hidden;
+        transition: all 0.3s ease;
+        z-index: 10;
+        display: inline-block;
       }
-
-      .btn::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          var(--gradient-1),
-          var(--gradient-2)
-        );
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
-
       .btn-primary {
         background: linear-gradient(
           135deg,
           var(--gradient-1),
           var(--gradient-2)
         );
-        color: var(--bg-primary);
+        color: var(--text);
         border: none;
       }
-
-      .btn-primary:hover {
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 20px 40px rgba(0, 245, 255, 0.4);
-      }
-
       .btn-secondary {
-        background: transparent;
+        background: rgba(187, 64, 255, 0.05);
         color: var(--accent);
-        border: 2px solid var(--accent);
-      }
-
-      .btn-secondary:hover {
-        background: var(--accent-dim);
-        transform: translateY(-3px);
+        border: 1px solid var(--accent);
+        backdrop-filter: blur(5px);
       }
 
       /* Section Styles */
@@ -857,7 +740,6 @@
         padding: 8rem 0;
         position: relative;
       }
-
       .section-header {
         text-align: center;
         margin-bottom: 5rem;
@@ -866,13 +748,11 @@
         animation-timeline: view();
         animation-range: entry 0% cover 30%;
       }
-
       @keyframes fadeIn {
         to {
           opacity: 1;
         }
       }
-
       .section-tag {
         font-family: "JetBrains Mono", monospace;
         font-size: 0.9rem;
@@ -881,22 +761,26 @@
         letter-spacing: 3px;
         margin-bottom: 1rem;
       }
-
       .section-title {
         font-size: clamp(2.5rem, 5vw, 4rem);
         font-weight: 800;
-        background: linear-gradient(135deg, var(--text), var(--text-dim));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: var(--text);
       }
 
-      /* Experience Timeline with Modern Design */
+      /* 3D Tilt Cards */
+      .tilt-card {
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+      }
+      .tilt-content {
+        transform: translateZ(20px);
+      }
+
       .timeline {
         position: relative;
         max-width: 900px;
         margin: 0 auto;
       }
-
       .timeline::before {
         content: "";
         position: absolute;
@@ -906,33 +790,38 @@
         width: 2px;
         background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
       }
-
       .timeline-item {
         position: relative;
-        padding-left: 4rem;
-        margin-bottom: 4rem;
+        padding: 2.5rem;
+        margin-left: 2rem;
+        margin-bottom: 3rem;
+        background: rgba(20, 20, 35, 0.4);
+        border: 1px solid rgba(187, 64, 255, 0.15);
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
         opacity: 0;
         animation: slideInLeft 0.8s ease forwards;
         animation-timeline: view();
         animation-range: entry 0% cover 25%;
+        transition:
+          transform 0.1s ease,
+          box-shadow 0.3s ease;
       }
-
       @keyframes slideInLeft {
         from {
           opacity: 0;
-          transform: translateX(-50px);
+          transform: translateX(-20px);
         }
         to {
           opacity: 1;
           transform: translateX(0);
         }
       }
-
       .timeline-item::before {
         content: "";
         position: absolute;
-        left: -6px;
-        top: 8px;
+        left: -39px;
+        top: 40px;
         width: 14px;
         height: 14px;
         border-radius: 50%;
@@ -940,23 +829,7 @@
         box-shadow:
           0 0 0 4px var(--bg-primary),
           0 0 0 8px var(--accent-dim);
-        animation: pulse 2s ease-in-out infinite;
       }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          box-shadow:
-            0 0 0 4px var(--bg-primary),
-            0 0 0 8px var(--accent-dim);
-        }
-        50% {
-          box-shadow:
-            0 0 0 4px var(--bg-primary),
-            0 0 0 16px var(--accent-dim);
-        }
-      }
-
       .timeline-date {
         font-family: "JetBrains Mono", monospace;
         font-size: 0.85rem;
@@ -965,260 +838,32 @@
         letter-spacing: 1px;
         margin-bottom: 0.75rem;
       }
-
       .timeline-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
         color: var(--text);
       }
-
       .timeline-company {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         color: var(--text-dim);
         margin-bottom: 1.5rem;
       }
-
-      .timeline-description {
-        list-style: none;
-      }
-
       .timeline-description li {
         color: var(--text-dim);
-        margin-bottom: 1rem;
-        padding-left: 2rem;
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
         position: relative;
-        line-height: 1.8;
+        line-height: 1.6;
       }
-
       .timeline-description li::before {
         content: "→";
         position: absolute;
         left: 0;
         color: var(--accent);
-        font-weight: bold;
       }
 
-      /* Skills Grid with Hover Effects */
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 1.5rem;
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-
-      .skill-card {
-        background: var(--bg-card);
-        padding: 2rem 1.5rem;
-        border-radius: 16px;
-        border: 1px solid rgba(0, 245, 255, 0.1);
-        text-align: center;
-        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        position: relative;
-        overflow: hidden;
-        opacity: 0;
-        animation: scaleIn 0.6s ease forwards;
-        animation-timeline: view();
-        animation-range: entry 0% cover 20%;
-      }
-
-      @keyframes scaleIn {
-        from {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .skill-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, var(--accent-dim), transparent);
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
-
-      .skill-card:hover {
-        transform: translateY(-10px) rotate(2deg);
-        border-color: var(--accent);
-        box-shadow: 0 20px 50px rgba(0, 245, 255, 0.3);
-      }
-
-      .skill-card:hover::before {
-        opacity: 1;
-      }
-
-      .skill-name {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text);
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Contact Section */
-      .contact-content {
-        max-width: 700px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .contact-title {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 800;
-        margin-bottom: 2rem;
-        background: linear-gradient(
-          135deg,
-          var(--gradient-1),
-          var(--gradient-2)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .contact-description {
-        font-size: 1.2rem;
-        color: var(--text-dim);
-        line-height: 1.8;
-        margin-bottom: 3rem;
-      }
-
-      .contact-info {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-        margin-bottom: 3rem;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.25rem 2rem;
-        background: var(--bg-card);
-        border: 1px solid rgba(0, 245, 255, 0.1);
-        border-radius: 16px;
-        color: var(--text);
-        text-decoration: none;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.95rem;
-        transition: all 0.4s ease;
-      }
-
-      .contact-item:hover {
-        border-color: var(--accent);
-        background: var(--accent-dim);
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 245, 255, 0.2);
-      }
-
-      .contact-item span:first-child {
-        font-size: 1.5rem;
-      }
-
-      /* Footer */
-      footer {
-        padding: 3rem 0;
-        text-align: center;
-        border-top: 1px solid rgba(0, 245, 255, 0.1);
-        color: var(--text-dim);
-      }
-
-      .footer-text {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.9rem;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-
-        .hero {
-          min-height: auto;
-          padding: 3rem 0;
-        }
-
-        .timeline {
-          padding-left: 0;
-        }
-
-        .timeline::before {
-          left: 10px;
-        }
-
-        .timeline-item {
-          padding-left: 3rem;
-        }
-
-        .timeline-item::before {
-          left: 4px;
-        }
-
-        .skills-grid {
-          grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        }
-
-        section {
-          padding: 4rem 0;
-        }
-
-        .contact-info {
-          flex-direction: column;
-        }
-
-        .hero-cta {
-          flex-direction: column;
-        }
-
-        .scene-3d {
-          width: 250px;
-          height: 250px;
-        }
-
-        .character-3d {
-          width: 150px;
-          height: 150px;
-        }
-
-        .head {
-          width: 60px;
-          height: 60px;
-          left: 45px;
-        }
-
-        .body {
-          width: 75px;
-          height: 90px;
-          left: 37px;
-        }
-
-        .laptop {
-          width: 105px;
-          height: 75px;
-          left: 22px;
-        }
-      }
-
-      /* Smooth Scroll */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Selection */
-      ::selection {
-        background: var(--accent);
-        color: var(--bg-primary);
-      }
-
+      /* Skills Grid */
       .skills-modern-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1226,61 +871,149 @@
         max-width: 1000px;
         margin: 0 auto;
       }
-
       .skill-group {
         position: relative;
         padding: 2.5rem 2rem;
         border-radius: 20px;
-        background: rgba(26, 29, 46, 0.6);
+        background: rgba(20, 20, 35, 0.4);
         backdrop-filter: blur(16px);
-        border: 1px solid rgba(0, 245, 255, 0.15);
-        transition: all 0.4s ease;
+        border: 1px solid rgba(187, 64, 255, 0.15);
+        transition: transform 0.1s ease;
       }
-
-      .skill-group::before {
+      .skill-group::after {
         content: "";
         position: absolute;
-        inset: 0;
-        border-radius: inherit;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
         background: linear-gradient(
-          135deg,
-          rgba(0, 245, 255, 0.15),
-          transparent
+          125deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 40%
         );
         opacity: 0;
-        transition: opacity 0.4s ease;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
       }
-
-      .skill-group:hover {
-        transform: translateY(-6px);
-        border-color: var(--accent);
-        box-shadow: 0 25px 60px rgba(0, 245, 255, 0.25);
-      }
-
-      .skill-group:hover::before {
+      .skill-group:hover::after {
         opacity: 1;
       }
-
       .skill-group h3 {
         font-family: "JetBrains Mono", monospace;
         font-size: 1.1rem;
         color: var(--accent);
         margin-bottom: 1rem;
         letter-spacing: 1px;
+        transform: translateZ(30px);
       }
-
       .skill-group p {
         font-size: 1.05rem;
         color: var(--text-dim);
         line-height: 1.7;
+        transform: translateZ(20px);
       }
 
-      #contact .hero-cta {
+      /* Contact */
+      .contact-content {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .contact-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 2rem;
+      }
+      .contact-description {
+        font-size: 1.2rem;
+        color: var(--text-dim);
+        line-height: 1.8;
+        margin-bottom: 3rem;
+      }
+      .contact-info {
+        display: flex;
         justify-content: center;
+        margin-bottom: 3rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem 2rem;
+        background: rgba(20, 20, 35, 0.6);
+        border: 1px solid rgba(187, 64, 255, 0.15);
+        border-radius: 16px;
+        color: var(--text);
+        text-decoration: none;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+      .contact-item:hover {
+        border-color: var(--accent);
+        background: rgba(187, 64, 255, 0.1);
+        box-shadow: 0 0 30px rgba(187, 64, 255, 0.2);
+      }
+
+      footer {
+        padding: 3rem 0;
+        text-align: center;
+        border-top: 1px solid rgba(187, 64, 255, 0.1);
+        color: var(--text-dim);
+      }
+      .footer-text {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hero {
+          padding: 3rem 0;
+        }
+        .timeline {
+          padding-left: 0;
+        }
+        .timeline::before {
+          left: 10px;
+        }
+        .timeline-item {
+          margin-left: 3rem;
+        }
+        .timeline-item::before {
+          left: -43px;
+        }
+        .scene-3d {
+          width: 250px;
+          height: 250px;
+        }
+        .character-3d {
+          width: 150px;
+          height: 150px;
+        }
+        .head {
+          width: 60px;
+          height: 60px;
+          left: 45px;
+        }
+        .body {
+          width: 75px;
+          height: 90px;
+          left: 37px;
+        }
+        .laptop {
+          width: 105px;
+          height: 75px;
+          left: 22px;
+        }
       }
     </style>
   </head>
-  <!-- Google tag (gtag.js) -->
+
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-TXH1LQ8V4L"
@@ -1291,15 +1024,15 @@
       dataLayer.push(arguments);
     }
     gtag("js", new Date());
-
     gtag("config", "G-TXH1LQ8V4L");
   </script>
+
   <body>
-    <!-- 3D Loader -->
-    <div class="loader-wrapper" id="loader">
+    <div id="canvas-container"></div>
+
+    <div class="loader-wrapper" id="loader" aria-hidden="true">
       <div class="scene-3d">
         <div class="character-3d">
-          <!-- 3D Head -->
           <div class="head">
             <div class="face front">
               <div class="face-front">
@@ -1316,8 +1049,6 @@
             <div class="face top"></div>
             <div class="face bottom"></div>
           </div>
-
-          <!-- 3D Body -->
           <div class="body">
             <div class="face front"></div>
             <div class="face back"></div>
@@ -1326,12 +1057,8 @@
             <div class="face top"></div>
             <div class="face bottom"></div>
           </div>
-
-          <!-- Arms -->
           <div class="arm arm-left"></div>
           <div class="arm arm-right"></div>
-
-          <!-- 3D Laptop -->
           <div class="laptop">
             <div class="laptop-base">
               <div class="face top"></div>
@@ -1349,8 +1076,6 @@
               <div class="face back"></div>
             </div>
           </div>
-
-          <!-- Coffee Mug -->
           <div class="coffee-mug">
             <div class="mug-body">
               <div class="face front"></div>
@@ -1370,16 +1095,9 @@
       <div class="loading-text">Loading<span class="loading-dots"></span></div>
     </div>
 
-    <div class="bg-wrapper">
-      <div class="bg-dots"></div>
-      <div class="floating-orb orb-1"></div>
-      <div class="floating-orb orb-2"></div>
-      <div class="floating-orb orb-3"></div>
-    </div>
-
-    <header>
+    <header role="banner">
       <div class="container">
-        <nav>
+        <nav aria-label="Main Navigation">
           <div class="logo">{ BP }</div>
           <ul class="nav-links">
             <li><a href="#about">About</a></li>
@@ -1391,48 +1109,51 @@
       </div>
     </header>
 
-    <main>
+    <main role="main">
       <section class="hero" id="about">
         <div class="container">
-          <div class="hero-content">
-            <div class="hero-tag">Backend Engineer</div>
-            <h1 class="hero-title">
+          <article class="hero-content">
+            <div class="hero-tag tilt-content">Backend Engineer</div>
+            <h1 class="hero-title tilt-content">
               <span class="name">Brijesh Patel</span>
             </h1>
-            <p class="hero-subtitle">
+            <p class="hero-subtitle tilt-content">
               Senior Software Engineer • 6+ Years Experience
             </p>
-            <p class="hero-description">
+            <p class="hero-description tilt-content">
               Specialized in building high-performance APIs, scalable system
               architecture, and cloud infrastructure. Expert in authentication
               systems and designing custom OAuth 2.0 authorization flows.
-              Passionate about building robust systems that scale to millions of
-              users.
             </p>
-            <div class="hero-cta">
-              <a href="#contact" class="btn btn-primary">Get In Touch</a>
-              <a href="#experience" class="btn btn-secondary"
+            <div class="hero-cta tilt-content">
+              <a href="#contact" class="btn btn-primary magnetic-btn"
+                >Get In Touch</a
+              >
+              <a href="#experience" class="btn btn-secondary magnetic-btn"
                 >View Experience</a
               >
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
       <section id="experience">
         <div class="container">
-          <div class="section-header">
+          <header class="section-header">
             <div class="section-tag">Professional Journey</div>
             <h2 class="section-title">Experience</h2>
-          </div>
+          </header>
+
           <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">May 2024 — Present</div>
-              <h3 class="timeline-title">Senior Software Engineer</h3>
-              <div class="timeline-company">
+            <article class="timeline-item tilt-card">
+              <div class="timeline-date tilt-content">May 2024 — Present</div>
+              <h3 class="timeline-title tilt-content">
+                Senior Software Engineer
+              </h3>
+              <div class="timeline-company tilt-content">
                 OnMobile Communications • Bengaluru
               </div>
-              <ul class="timeline-description">
+              <ul class="timeline-description tilt-content">
                 <li>
                   Architecting GraphQL APIs supporting 1M+ monthly active users
                   on gaming platform
@@ -1446,17 +1167,20 @@
                   constraints in caching layer
                 </li>
                 <li>
-                  Built event processing system handling 100K+ daily events with
-                  Redis-backed global leaderboards
+                  Built event processing system handling 100K+ daily events
                 </li>
               </ul>
-            </div>
+            </article>
 
-            <div class="timeline-item">
-              <div class="timeline-date">July 2021 — May 2024</div>
-              <h3 class="timeline-title">Senior Software Engineer</h3>
-              <div class="timeline-company">Coditation Systems • Pune</div>
-              <ul class="timeline-description">
+            <article class="timeline-item tilt-card">
+              <div class="timeline-date tilt-content">July 2021 — May 2024</div>
+              <h3 class="timeline-title tilt-content">
+                Senior Software Engineer
+              </h3>
+              <div class="timeline-company tilt-content">
+                Coditation Systems • Pune
+              </div>
+              <ul class="timeline-description tilt-content">
                 <li>
                   Transformed monolithic Python backend into distributed
                   services using Nameko and RabbitMQ
@@ -1470,13 +1194,19 @@
                   utilization by 40%
                 </li>
               </ul>
-            </div>
+            </article>
 
-            <div class="timeline-item">
-              <div class="timeline-date">September 2019 — July 2021</div>
-              <h3 class="timeline-title">Associate IT Consultant</h3>
-              <div class="timeline-company">ITC Infotech • Bengaluru</div>
-              <ul class="timeline-description">
+            <article class="timeline-item tilt-card">
+              <div class="timeline-date tilt-content">
+                September 2019 — July 2021
+              </div>
+              <h3 class="timeline-title tilt-content">
+                Associate IT Consultant
+              </h3>
+              <div class="timeline-company tilt-content">
+                ITC Infotech • Bengaluru
+              </div>
+              <ul class="timeline-description tilt-content">
                 <li>
                   Migrated Partner Data Manager ETL tool to Python backend,
                   improving performance by 30%
@@ -1488,48 +1218,43 @@
                   Built Node.js backend services for customer loyalty portal
                 </li>
               </ul>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
       <section id="skills">
         <div class="container">
-          <div class="section-header">
+          <header class="section-header">
             <div class="section-tag">Expertise</div>
             <h2 class="section-title">Skills & Technologies</h2>
-          </div>
+          </header>
 
           <div class="skills-modern-grid">
-            <div class="skill-group">
+            <article class="skill-group tilt-card">
               <h3>Architecture</h3>
               <p>System Design • OAuth 2.0 • Scalable Auth • Microservices</p>
-            </div>
-
-            <div class="skill-group">
+            </article>
+            <article class="skill-group tilt-card">
               <h3>Backend</h3>
               <p>Node.js • GraphQL • Flask • Nameko • REST APIs</p>
-            </div>
-
-            <div class="skill-group">
+            </article>
+            <article class="skill-group tilt-card">
               <h3>Languages</h3>
               <p>Python • TypeScript • JavaScript</p>
-            </div>
-
-            <div class="skill-group">
+            </article>
+            <article class="skill-group tilt-card">
               <h3>Databases</h3>
               <p>PostgreSQL • MongoDB • Redis • Snowflake</p>
-            </div>
-
-            <div class="skill-group">
+            </article>
+            <article class="skill-group tilt-card">
               <h3>Cloud & DevOps</h3>
               <p>AWS • Docker • Kubernetes • Terraform • CI/CD</p>
-            </div>
-
-            <div class="skill-group">
+            </article>
+            <article class="skill-group tilt-card">
               <h3>Messaging & Infra</h3>
               <p>RabbitMQ • Redis Streams • Event-Driven Systems</p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -1543,17 +1268,15 @@
               Open to discussing new opportunities, interesting projects, and
               collaborations.
             </p>
-            <div class="contact-info">
-              <a href="mailto:sadariyabrijesh@gmail.com" class="contact-item">
+            <address class="contact-info">
+              <a
+                href="mailto:sadariyabrijesh@gmail.com"
+                class="contact-item magnetic-btn"
+              >
                 <span>📧</span>
                 <span>sadariyabrijesh@gmail.com</span>
               </a>
-            </div>
-            <div class="hero-cta">
-              <a href="mailto:sadariyabrijesh@gmail.com" class="btn btn-primary"
-                >Send Email</a
-              >
-            </div>
+            </address>
           </div>
         </div>
       </section>
@@ -1568,12 +1291,13 @@
     </footer>
 
     <script>
-      // Force loader to show for at least 2 seconds
+      // 1. Loader Logic
       const startTime = Date.now();
-      const minLoadTime = 2000; // 2 seconds
+      const minLoadTime = 2000;
 
       window.addEventListener("load", function () {
         const loader = document.getElementById("loader");
+        const canvasContainer = document.getElementById("canvas-container");
         const elapsedTime = Date.now() - startTime;
         const remainingTime = Math.max(0, minLoadTime - elapsedTime);
 
@@ -1581,8 +1305,145 @@
           loader.classList.add("hidden");
           setTimeout(() => {
             loader.remove();
+            canvasContainer.style.opacity = "1";
           }, 500);
         }, remainingTime);
+      });
+
+      // 2. THREE.JS BACKGROUND ANIMATION - UPDATED COLOR
+      const initThreeJS = () => {
+        const container = document.getElementById("canvas-container");
+        const scene = new THREE.Scene();
+
+        // Fog matching new dark purple/obsidian background
+        scene.fog = new THREE.FogExp2(0x050508, 0.002);
+
+        const camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000,
+        );
+        camera.position.z = 30;
+
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true,
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 700;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+          posArray[i] = (Math.random() - 0.5) * 60;
+        }
+
+        particlesGeometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(posArray, 3),
+        );
+
+        // Updated particle color to Neon Purple (0xbb40ff)
+        const particlesMaterial = new THREE.PointsMaterial({
+          size: 0.05,
+          color: 0xbb40ff,
+          transparent: true,
+          opacity: 0.8,
+        });
+
+        const particlesMesh = new THREE.Points(
+          particlesGeometry,
+          particlesMaterial,
+        );
+        scene.add(particlesMesh);
+
+        // Neural Lines
+        const geometry = new THREE.IcosahedronGeometry(15, 1);
+        const wireframe = new THREE.WireframeGeometry(geometry);
+        const line = new THREE.LineSegments(wireframe);
+        line.material.depthTest = false;
+        line.material.opacity = 0.05;
+        line.material.transparent = true;
+        // Updated line color
+        line.material.color = new THREE.Color(0xbb40ff);
+        scene.add(line);
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener("mousemove", (event) => {
+          mouseX = event.clientX / window.innerWidth - 0.5;
+          mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        const animate = () => {
+          requestAnimationFrame(animate);
+          line.rotation.x += 0.001;
+          line.rotation.y += 0.001;
+          particlesMesh.rotation.y = -mouseX * 0.5;
+          particlesMesh.rotation.x = -mouseY * 0.5;
+          camera.position.x += (mouseX * 5 - camera.position.x) * 0.05;
+          camera.position.y += (-mouseY * 5 - camera.position.y) * 0.05;
+          camera.lookAt(scene.position);
+          renderer.render(scene, camera);
+        };
+
+        animate();
+
+        window.addEventListener("resize", () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+      };
+
+      initThreeJS();
+
+      // 3. VANILLA TILT EFFECT
+      const initTilt = () => {
+        const tiltCards = document.querySelectorAll(".tilt-card");
+        tiltCards.forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+          });
+          card.addEventListener("mouseleave", () => {
+            card.style.transform =
+              "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
+          });
+        });
+      };
+
+      // 4. MAGNETIC BUTTONS
+      const initMagneticButtons = () => {
+        const buttons = document.querySelectorAll(".magnetic-btn");
+        buttons.forEach((btn) => {
+          btn.addEventListener("mousemove", (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+          });
+          btn.addEventListener("mouseleave", () => {
+            btn.style.transform = "translate(0, 0)";
+          });
+        });
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initTilt();
+        initMagneticButtons();
       });
     </script>
   </body>
