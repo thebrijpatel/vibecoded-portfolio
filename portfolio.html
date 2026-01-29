@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brijesh Patel - Backend Engineer</title>
     <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2300f5ff' d='M4 5h16a1 1 0 0 1 1 1v9H3V6a1 1 0 0 1 1-1zm-1 11h18v2H3v-2z'/%3E%3C/svg%3E"
+    />
+
+    <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;800&display=swap"
       rel="stylesheet"
     />
@@ -1212,8 +1218,82 @@
         background: var(--accent);
         color: var(--bg-primary);
       }
+
+      .skills-modern-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .skill-group {
+        position: relative;
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+        background: rgba(26, 29, 46, 0.6);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(0, 245, 255, 0.15);
+        transition: all 0.4s ease;
+      }
+
+      .skill-group::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 245, 255, 0.15),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .skill-group:hover {
+        transform: translateY(-6px);
+        border-color: var(--accent);
+        box-shadow: 0 25px 60px rgba(0, 245, 255, 0.25);
+      }
+
+      .skill-group:hover::before {
+        opacity: 1;
+      }
+
+      .skill-group h3 {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.1rem;
+        color: var(--accent);
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+      }
+
+      .skill-group p {
+        font-size: 1.05rem;
+        color: var(--text-dim);
+        line-height: 1.7;
+      }
+
+      #contact .hero-cta {
+        justify-content: center;
+      }
     </style>
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-TXH1LQ8V4L"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-TXH1LQ8V4L");
+  </script>
   <body>
     <!-- 3D Loader -->
     <div class="loader-wrapper" id="loader">
@@ -1416,49 +1496,40 @@
       <section id="skills">
         <div class="container">
           <div class="section-header">
-            <div class="section-tag">Tech Stack</div>
+            <div class="section-tag">Expertise</div>
             <h2 class="section-title">Skills & Technologies</h2>
           </div>
-          <div class="skills-grid">
-            <div class="skill-card"><div class="skill-name">Python</div></div>
-            <div class="skill-card">
-              <div class="skill-name">TypeScript</div>
+
+          <div class="skills-modern-grid">
+            <div class="skill-group">
+              <h3>Architecture</h3>
+              <p>System Design • OAuth 2.0 • Scalable Auth • Microservices</p>
             </div>
-            <div class="skill-card"><div class="skill-name">Node.js</div></div>
-            <div class="skill-card"><div class="skill-name">GraphQL</div></div>
-            <div class="skill-card"><div class="skill-name">Flask</div></div>
-            <div class="skill-card"><div class="skill-name">Nameko</div></div>
-            <div class="skill-card"><div class="skill-name">Docker</div></div>
-            <div class="skill-card">
-              <div class="skill-name">Kubernetes</div>
+
+            <div class="skill-group">
+              <h3>Backend</h3>
+              <p>Node.js • GraphQL • Flask • Nameko • REST APIs</p>
             </div>
-            <div class="skill-card">
-              <div class="skill-name">Terraform</div>
+
+            <div class="skill-group">
+              <h3>Languages</h3>
+              <p>Python • TypeScript • JavaScript</p>
             </div>
-            <div class="skill-card"><div class="skill-name">AWS</div></div>
-            <div class="skill-card"><div class="skill-name">Redis</div></div>
-            <div class="skill-card">
-              <div class="skill-name">PostgreSQL</div>
+
+            <div class="skill-group">
+              <h3>Databases</h3>
+              <p>PostgreSQL • MongoDB • Redis • Snowflake</p>
             </div>
-            <div class="skill-card"><div class="skill-name">MongoDB</div></div>
-            <div class="skill-card"><div class="skill-name">RabbitMQ</div></div>
-            <div class="skill-card"><div class="skill-name">Keycloak</div></div>
-            <div class="skill-card">
-              <div class="skill-name">OAuth 2.0</div>
+
+            <div class="skill-group">
+              <h3>Cloud & DevOps</h3>
+              <p>AWS • Docker • Kubernetes • Terraform • CI/CD</p>
             </div>
-            <div class="skill-card">
-              <div class="skill-name">Snowflake</div>
+
+            <div class="skill-group">
+              <h3>Messaging & Infra</h3>
+              <p>RabbitMQ • Redis Streams • Event-Driven Systems</p>
             </div>
-            <div class="skill-card">
-              <div class="skill-name">SQLAlchemy</div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-name">System Design</div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-name">REST APIs</div>
-            </div>
-            <div class="skill-card"><div class="skill-name">CI/CD</div></div>
           </div>
         </div>
       </section>
