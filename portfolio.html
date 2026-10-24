@@ -2,13 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>Brijesh Patel — Engineering Lead</title>
-    <meta name="description" content="Brijesh Patel, Engineering Lead at OnMobile Global Limited, Bengaluru. Backend and platform engineering." />
+    <meta
+      name="description"
+      content="Brijesh Patel, Engineering Lead at OnMobile Global Limited, Bengaluru. Backend and platform engineering."
+    />
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://brijeshpatel.com/" />
     <meta property="og:title" content="Brijesh Patel — Engineering Lead" />
-    <meta property="og:description" content="Backend and platform engineering." />
+    <meta
+      property="og:description"
+      content="Backend and platform engineering."
+    />
     <meta property="twitter:card" content="summary" />
 
     <script type="application/ld+json">
@@ -17,7 +26,10 @@
         "@type": "Person",
         "name": "Brijesh Patel",
         "jobTitle": "Engineering Lead",
-        "worksFor": { "@type": "Organization", "name": "OnMobile Global Limited" },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "OnMobile Global Limited"
+        },
         "url": "https://brijeshpatel.com",
         "email": "sadariyabrijesh@gmail.com",
         "sameAs": [
@@ -34,7 +46,10 @@
       rel="stylesheet"
     />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TXH1LQ8V4L"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TXH1LQ8V4L"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -108,7 +123,12 @@
           linear-gradient(90deg, var(--grid) 1px, transparent 1px);
         background-size: 76px 76px;
         color: var(--ink);
-        font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
         font-weight: 300;
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
@@ -218,8 +238,12 @@
         display: flex;
         flex-direction: column;
         padding: clamp(1.4rem, 3vw, 2.6rem) clamp(1.4rem, 4vw, 3.4rem);
-        padding-top: calc(clamp(1.4rem, 3vw, 2.6rem) + env(safe-area-inset-top, 0px));
-        padding-bottom: calc(clamp(1.4rem, 3vw, 2.6rem) + env(safe-area-inset-bottom, 0px));
+        padding-top: calc(
+          clamp(1.4rem, 3vw, 2.6rem) + env(safe-area-inset-top, 0px)
+        );
+        padding-bottom: calc(
+          clamp(1.4rem, 3vw, 2.6rem) + env(safe-area-inset-bottom, 0px)
+        );
       }
 
       .topbar {
@@ -244,16 +268,13 @@
       .about {
         flex: 1;
         margin: clamp(2rem, 5vh, 3rem) 0 clamp(2.4rem, 6vh, 3.4rem);
-        columns: 2;
-        column-gap: clamp(2rem, 5vw, 4rem);
         font-size: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
         line-height: 1.75;
-        max-width: 68rem;
+        max-width: 46rem;
       }
 
       .about p {
         margin: 0 0 1.1rem;
-        break-inside: avoid;
       }
 
       .about p:last-child {
@@ -262,12 +283,6 @@
 
       .about b {
         font-weight: 500;
-      }
-
-      @media (max-width: 54rem) {
-        .about {
-          columns: 1;
-        }
       }
 
       .wordmark {
@@ -330,7 +345,8 @@
         padding: 0.9rem 1rem;
         border: 1px solid var(--rule);
         background: var(--bg-deep);
-        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-family:
+          "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
         font-size: 0.78rem;
         line-height: 1.95;
         overflow: hidden;
@@ -551,7 +567,9 @@
         <div class="standfirst reveal d3">
           <div class="post">
             <span class="post-role">Engineering Lead</span>
-            <span class="post-org"><a href="https://onmoplus.com/">OnMobile Global Limited</a></span>
+            <span class="post-org"
+              ><a href="https://onmoplus.com/">OnMobile Global Limited</a></span
+            >
           </div>
           <div class="dim">Backend, platform and cloud architecture</div>
         </div>
@@ -559,13 +577,14 @@
 
       <div class="about reveal d4">
         <p>
-          I lead the gaming engineering team at OnMobile Global Limited. I specialize in backend
-          and platform engineering, building the APIs, authentication systems, services, and data
-          infrastructure that power reliable, scalable applications.
+          I lead the gaming engineering team at OnMobile Global Limited. I
+          specialize in backend and platform engineering, building the APIs,
+          authentication systems, services, and data infrastructure that power
+          reliable, scalable applications.
         </p>
         <p>
-          I design systems for scale, working across distributed services, caching and queueing,
-          and cloud architecture.
+          I design systems for scale, working across distributed services,
+          caching and queueing, and cloud architecture.
         </p>
       </div>
 
@@ -661,7 +680,7 @@
           ["GET", "/v1/catalog/featured", "200", "31ms"],
           ["POST", "/v1/auth/logout", "204", "6ms"],
           ["GET", "/v1/users/9c21/invoices", "200", "63ms"],
-          ["POST", "/v1/rate-limit/reset", "503", "12ms"]
+          ["POST", "/v1/rate-limit/reset", "503", "12ms"],
         ];
         var keep = 8;
         var i = 0;
@@ -691,12 +710,16 @@
         box.innerHTML = html;
 
         var reduced =
-          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (reduced) return;
 
         setInterval(function () {
           box.removeChild(box.firstElementChild);
-          box.insertAdjacentHTML("beforeend", render(lines[i % lines.length], true));
+          box.insertAdjacentHTML(
+            "beforeend",
+            render(lines[i % lines.length], true),
+          );
           i++;
         }, 1200);
       })();
